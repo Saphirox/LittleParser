@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace LittleParser.Models
+namespace LittleParser.Models.Entities
 {
     public class ApacheLog : IEntity
     {
@@ -10,8 +11,6 @@ namespace LittleParser.Models
         
         public string Geolocation { get; set; }
         
-        public string QueryParameters { get; set; }
-        
         public string Route { get; set; }
         
         public int StatusCode { get; set; }
@@ -19,5 +18,7 @@ namespace LittleParser.Models
         public DateTimeOffset DateTimeOffset { get; set; }
 
         public long ContentSize { get; set; }
+        
+        public string QueryParameters { get; set; }
     }
 }

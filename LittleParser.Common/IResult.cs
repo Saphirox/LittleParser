@@ -1,6 +1,4 @@
-﻿using LittleSocialNetwork.Common.Definitions.Enums;
-
-namespace LittleSocialNetwork.Common.Definitions.Results
+﻿namespace LittleParser.Common
 {
     public interface IResult
     {

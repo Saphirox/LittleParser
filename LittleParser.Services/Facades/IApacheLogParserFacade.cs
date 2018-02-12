@@ -1,9 +1,9 @@
 ﻿using LittleParser.Models.Entities;
 
-namespace LittleParser.Services.Services
+namespace LittleParser.Services.Facades
 {
     public interface IApacheLogParserFacade
     {
-        ApacheLog Parse(string line);
+        bool TryParse(string line, out ApacheLog log);
     }
 }

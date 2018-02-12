@@ -1,4 +1,4 @@
-﻿namespace LittleSocialNetwork.Common.Definitions.Enums
+﻿namespace LittleParser.Common
 {
     public enum ResultStatus 
     {

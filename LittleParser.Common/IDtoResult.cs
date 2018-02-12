@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LittleSocialNetwork.Common.Definitions.Results
+namespace LittleParser.Common
 {
     public interface IDtoResult<TDto> : IResult where TDto: class
     {

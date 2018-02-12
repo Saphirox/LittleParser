@@ -1,4 +1,4 @@
-﻿namespace LittleParser.Models
+﻿namespace LittleParser.Models.Entities
 {
     public interface IEntity
     {
