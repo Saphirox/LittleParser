@@ -8,13 +8,13 @@ namespace LittleParser.Application.Infrastructure
 {
     public class LogReader
     {
-        private readonly IApacheLogParserFacade _apacheLogParserFacade;
-        private readonly HttpClientFacade _httpClientFacade;
+        private readonly IApacheLogParserProvider _apacheLogParserProvider;
+        private readonly HttpClientProvider _httpClientProvider;
 
-        public LogReader(IApacheLogParserFacade apacheLogParserFacade, HttpClientFacade httpClientFacade)
+        public LogReader(IApacheLogParserProvider apacheLogParserProvider, HttpClientProvider httpClientProvider)
         {
-            _apacheLogParserFacade = apacheLogParserFacade;
-            _httpClientFacade = httpClientFacade;
+            _apacheLogParserProvider = apacheLogParserProvider;
+            _httpClientProvider = httpClientProvider;
         }
 
         public async Task ReadAndSendAsync(string fileName)
@@ -31,7 +31,7 @@ namespace LittleParser.Application.Infrastructure
                 {
                     while (streamReader.Peek() > -1)
                     {
-                        if (_apacheLogParserFacade.TryParse(await streamReader.ReadLineAsync(), out var result))
+                        if (_apacheLogParserProvider.TryParse(await streamReader.ReadLineAsync(), out var result))
                         {
                             logs.Add(result);
                         }
@@ -40,7 +40,7 @@ namespace LittleParser.Application.Infrastructure
 
                         if (logs.Count > count)
                         {
-                            await _httpClientFacade.SendAsJson(logs);
+                            await _httpClientProvider.SendAsJson(logs);
                             logs.Clear();
                         }
                     }

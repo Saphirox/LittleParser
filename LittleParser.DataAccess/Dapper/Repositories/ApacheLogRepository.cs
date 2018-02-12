@@ -23,35 +23,42 @@ namespace LittleParser.DataAccess.Dapper.Repositories
                         VALUES(@Host, @Route, @StatusCode, @DateTimeOffset, @ContentSize, @Geolocation, @QueryParameters);";
 
         private const string GetTopHostStatement = @"
-            SELECT [Host] FROM ApacheLogs WHERE @Start <= DateTimeOffset AND @End >= DateTimeOffset 
-            ORDER BY [DateTimeOffset] DESC
-            OFFSET @Offset ROWS FETCH NEXT @Limit ROWS ONLY";
+            SELECT TOP(@N) [Host] FROM ApacheLogs WHERE @Start <= DateTimeOffset AND @End >= DateTimeOffset 
+            ORDER BY [DateTimeOffset] DESC";
 
         private const string GetTopRoutesStatement = @"
-            SELECT [Route] FROM ApacheLogs WHERE @Start <= DateTimeOffset AND @End >= DateTimeOffset 
-            ORDER BY [DateTimeOffset] DESC
-            OFFSET @Offset ROWS FETCH NEXT @Limit ROWS ONLY";
+            SELECT TOP(@N) [Route] FROM ApacheLogs WHERE @Start <= DateTimeOffset AND @End >= DateTimeOffset 
+            ORDER BY [DateTimeOffset] DESC";
         
         public void Add(ApacheLog entity) =>
             Connection.Execute(AddStatement, entity, Transaction);
 
-        public IEnumerable<ApacheLog> GetAll(DateTimeOffset start, DateTimeOffset end, long offset, long limit)
+        public IEnumerable<ApacheLog> GetAll(DateTimeOffset? start, DateTimeOffset? end, long offset, long limit)
         {
-            var @params = new {Start = start, End = end, Offset = offset, Limit = limit};
+            start = start ?? DateTimeOffset.MinValue;
+            end = end ?? DateTimeOffset.MaxValue;
+            
+            var @params = new {Start = start.Value, End = end.Value, Offset = offset, Limit = limit};
 
             return Connection.Query<ApacheLog>(GetAllStatement, @params, Transaction);
         }
 
-        public IEnumerable<ApacheLog> GetTopHosts(DateTimeOffset start, DateTimeOffset end, long n)
+        public IEnumerable<ApacheLog> GetTopHosts(DateTimeOffset? start, DateTimeOffset? end, long n)
         {
-            var @params = new {Start = start, End = end, N = n};
+            start = start ?? DateTimeOffset.MinValue;
+            end = end ?? DateTimeOffset.MaxValue;
+            
+            var @params = new {Start = start.Value, End = end.Value, N = n};
             
             return Connection.Query<ApacheLog>(GetTopHostStatement, @params, Transaction);
         }
 
-        public IEnumerable<ApacheLog> GetTopRoutes(DateTimeOffset start, DateTimeOffset end, long n)
+        public IEnumerable<ApacheLog> GetTopRoutes(DateTimeOffset? start, DateTimeOffset? end, long n)
         {
-            var @params = new {Start = start, End = end, N = n};
+            start = start ?? DateTimeOffset.MinValue;
+            end = end ?? DateTimeOffset.MaxValue;
+            
+            var @params = new {Start = start.Value, End = end.Value, N = n};
             
             return Connection.Query<ApacheLog>(GetTopRoutesStatement, @params, Transaction);
         }

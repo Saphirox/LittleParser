@@ -1,5 +1,9 @@
 ﻿namespace LittleParser.Common
 {
+    /// <summary>
+    /// Dto between Web and Business logic layers
+    /// </summary>
+    
     public class ServiceResult : IResult
     {
         public ServiceResult()

@@ -27,15 +27,15 @@ namespace LittleParser.Web.Controllers
         }
 
         [Route("get-all")]
-        public HttpResponseMessage GetAll(DateTimeOffset start = default, DateTimeOffset end = default, long offset = 0, long limit = 10)
+        public HttpResponseMessage GetAll(DateTimeOffset? start = null, DateTimeOffset? end = null, long? offset = default(int), long? limit = 10)
         {
-            var result = _apacheLogService.GetAll(start, end, offset, limit);
+            var result = _apacheLogService.GetAll(start, end, offset.Value, limit.Value);
 
             return ReturnResult(result);
         }
 
         [Route("get-top-hosts")]
-        public HttpResponseMessage GetTopHosts(long n = 10, DateTimeOffset start = default, DateTimeOffset end = default)
+        public HttpResponseMessage GetTopHosts(long n = 10, DateTimeOffset? start = null, DateTimeOffset? end = null)
         {
             var result = _apacheLogService.GetTopHosts(n, start, end);
 
@@ -43,7 +43,7 @@ namespace LittleParser.Web.Controllers
         }
 
         [Route("get-top-routes")]
-        public HttpResponseMessage GetTopRoutes(long n = 10, DateTimeOffset start = default, DateTimeOffset end = default)
+        public HttpResponseMessage GetTopRoutes(long n = 10, DateTimeOffset? start = null, DateTimeOffset? end = null)
         {
             var result = _apacheLogService.GetTopRoutes(n, start, end);
 

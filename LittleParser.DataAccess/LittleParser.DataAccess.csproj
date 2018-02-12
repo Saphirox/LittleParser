@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dapper\Disposable.cs" />
-    <Compile Include="Dapper\Factories\DbSqlConnectionFactory.cs" />
+    <Compile Include="Dapper\Factories\SqlConnectionFactory.cs" />
     <Compile Include="Dapper\Factories\IDbConnectionFactory.cs" />
     <Compile Include="Dapper\Repositories\ApacheLogRepository.cs" />
     <Compile Include="Dapper\UnitOfWork.cs" />

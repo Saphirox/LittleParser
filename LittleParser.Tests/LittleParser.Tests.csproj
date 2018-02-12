@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LittleParser.Common\LittleParser.Common.csproj">
+      <Project>{00935359-A578-4C2A-A1A8-34ECEC25009A}</Project>
+      <Name>LittleParser.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LittleParser.Models\LittleParser.Models.csproj">
       <Project>{8FAAF998-1163-461A-9FEF-9872381B2CF9}</Project>
       <Name>LittleParser.Models</Name>

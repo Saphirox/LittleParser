@@ -39,8 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Facades\IApacheLogParserFacade.cs" />
-    <Compile Include="Facades\Impl\ApacheLogParserFacade.cs" />
+    <Compile Include="Providers\IApacheLogParserProvider.cs" />
+    <Compile Include="Providers\Impl\ApacheLogParserProvider.cs" />
+    <Compile Include="Infrastructure\Parsers\ApacheLogParser.cs" />
+    <Compile Include="Infrastructure\Parsers\ContentSizeVisitorLogParser.cs" />
+    <Compile Include="Infrastructure\Parsers\DateTimeOffsetLogParserVisitor.cs" />
+    <Compile Include="Infrastructure\Parsers\GeolocationLogParserVisitor.cs" />
+    <Compile Include="Infrastructure\Parsers\HostLogParserVisitor.cs" />
+    <Compile Include="Infrastructure\Parsers\LogParserVisitor.cs" />
+    <Compile Include="Infrastructure\Parsers\RouteLogParserVisitor.cs" />
+    <Compile Include="Infrastructure\Parsers\StatusCodeLogParserVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IApacheLogService.cs" />
     <Compile Include="Services\Impl\ApacheLogService.cs" />

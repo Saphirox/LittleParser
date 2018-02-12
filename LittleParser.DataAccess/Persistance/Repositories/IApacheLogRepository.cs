@@ -10,10 +10,10 @@ namespace LittleParser.DataAccess.Persistance.Repositories
     {
         void Add(ApacheLog entity);
         
-        IEnumerable<ApacheLog> GetAll(DateTimeOffset start, DateTimeOffset end, long offset, long limit);
+        IEnumerable<ApacheLog> GetAll(DateTimeOffset? start, DateTimeOffset? end, long offset, long limit);
         
-        IEnumerable<ApacheLog> GetTopHosts(DateTimeOffset start, DateTimeOffset end, long n = 10);
+        IEnumerable<ApacheLog> GetTopHosts(DateTimeOffset? start, DateTimeOffset? end, long n = 10);
 
-        IEnumerable<ApacheLog> GetTopRoutes(DateTimeOffset start, DateTimeOffset end, long n = 10);
+        IEnumerable<ApacheLog> GetTopRoutes(DateTimeOffset? start, DateTimeOffset? end, long n = 10);
     }
 }

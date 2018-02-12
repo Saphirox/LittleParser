@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace LittleParser.Common
 {
-    public static class ServiceResultExtensions
+    
+    /// <summary>
+    /// Helper for converting result to an appropriv view
+    /// </summary>
+    public static class ServiceResultConverter
     {
         public static ServiceResult<TModel> ConvertToResult<TEntity, TModel>(
             this ServiceResult<TEntity> source,

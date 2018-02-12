@@ -7,12 +7,11 @@ namespace LittleParser.Services.Services
 {
     public interface IApacheLogService
     {
-        ServiceResult<IEnumerable<ApacheLog>> GetTopHosts(long n = 10, DateTimeOffset start = default, DateTimeOffset end = default);
+        ServiceResult<IEnumerable<ApacheLog>> GetTopHosts(long n, DateTimeOffset? start, DateTimeOffset? end);
         
-        ServiceResult<IEnumerable<ApacheLog>> GetTopRoutes(long n = 10, DateTimeOffset start = default,
-            DateTimeOffset end = default);
+        ServiceResult<IEnumerable<ApacheLog>> GetTopRoutes(long n, DateTimeOffset? start, DateTimeOffset? end);
 
-        ServiceResult<IEnumerable<ApacheLog>> GetAll(DateTimeOffset start = default, DateTimeOffset end = default, long offset = 0, long limit = 10);
+        ServiceResult<IEnumerable<ApacheLog>> GetAll(DateTimeOffset? start, DateTimeOffset? end, long offset = 0, long limit = 10);
 
         ServiceResult AddRange(IEnumerable<ApacheLog> apacheLogs);
     }

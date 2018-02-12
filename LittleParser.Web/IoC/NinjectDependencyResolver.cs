@@ -56,7 +56,7 @@ namespace LittleParser.Web.IoC
         {
             this._kernel = kernel;
 
-            _kernel.Bind<IDbConnectionFactory>().To<DbSqlConnectionFactory>();
+            _kernel.Bind<IDbConnectionFactory>().To<SqlConnectionFactory>();
             _kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             _kernel.Bind<IApacheLogService>().To<ApacheLogService>();
         }

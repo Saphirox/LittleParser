@@ -17,6 +17,7 @@ namespace LittleParser.DataAccess.Dapper
         public UnitOfWork(IDbConnectionFactory connection)
         {
             _connection = connection.CreateConnection();
+            _connection.Open();
             _transaction = _connection.BeginTransaction(IsolationLevel.ReadUncommitted);
         }
 

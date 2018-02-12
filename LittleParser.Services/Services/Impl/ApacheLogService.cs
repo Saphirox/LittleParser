@@ -28,18 +28,17 @@ namespace LittleParser.Services.Services.Impl
             });
         }
 
-        public ServiceResult<IEnumerable<ApacheLog>> GetTopHosts(long n = 10, DateTimeOffset start = default, DateTimeOffset end = default)
+        public ServiceResult<IEnumerable<ApacheLog>> GetTopHosts(long n, DateTimeOffset? start, DateTimeOffset? end)
         {
             return ReturnResult(() => _uow.ApacheLogRepository.GetTopHosts(start, end, n));
         }
 
-        public ServiceResult<IEnumerable<ApacheLog>> GetTopRoutes(long n = 10, DateTimeOffset start = default,
-            DateTimeOffset end = default)
+        public ServiceResult<IEnumerable<ApacheLog>> GetTopRoutes(long n, DateTimeOffset? start, DateTimeOffset? end)
         {
             return ReturnResult(() => _uow.ApacheLogRepository.GetTopRoutes(start, end, n));
         }
 
-        public ServiceResult<IEnumerable<ApacheLog>> GetAll(DateTimeOffset start = default, DateTimeOffset end = default, long offset = 0, long limit = 10)
+        public ServiceResult<IEnumerable<ApacheLog>> GetAll(DateTimeOffset? start, DateTimeOffset? end, long offset, long limit)
         {
             return ReturnResult(() =>_uow.ApacheLogRepository.GetAll(start, end, offset, limit));
         }

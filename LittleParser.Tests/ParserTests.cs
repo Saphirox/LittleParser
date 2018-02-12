@@ -1,18 +1,20 @@
 ﻿using System;
 using LittleParser.Services.Facades;
-using LittleParser.Services.Facades.Impl;
 using NUnit.Framework;
 
 namespace LittleParser.Tests
 {
+    using LittleParser.Common.Helpers;
+    using LittleParser.Services.Providers.Impl;
+
     [TestFixture]
     public class ParserTests
     {
-        private readonly IApacheLogParserFacade _sut;
+        private readonly IApacheLogParserProvider _sut;
 
         public ParserTests()
         {
-            _sut = new ApacheLogParserFacade();
+            _sut = new ApacheLogParserProvider();
         }
 
         [Test]
@@ -23,12 +25,11 @@ namespace LittleParser.Tests
             _sut.TryParse(testData, out var result);
             
             Assert.AreEqual(result.ContentSize, 6245L);
-//            Assert.AreEqual(result.DateTimeOffset, ApacheLogParserFacade.ConvertApacheLogDateTime("01/Jul/1995:00:00:01 -0400"));
+            Assert.AreEqual(result.DateTimeOffset, DateTimeHelpers.ConvertApacheLogDateTime("01/Jul/1995:00:00:01 -0400"));
             Assert.AreEqual(result.Host, "199.72.81.55");
             Assert.AreEqual(result.Route, "/history/apollo/");
             Assert.AreEqual(result.StatusCode, 200);
             Assert.AreEqual(result.QueryParameters, string.Empty);
-            Assert.AreEqual(result.Geolocation, TimeZoneInfo.Local.StandardName);
         }
 
         [Test]
