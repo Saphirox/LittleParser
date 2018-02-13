@@ -1,12 +1,16 @@
 ﻿using System;
-using LittleParser.Services.Facades;
+using LittleParser.Services.Providers;
 using NUnit.Framework;
 
 namespace LittleParser.Tests
 {
-    using LittleParser.Common.Helpers;
-    using LittleParser.Services.Providers.Impl;
+    using Common.Helpers;
+    using Services.Providers.Impl;
 
+
+    /// <summary>
+    /// Testing of resulting of parsing
+    /// </summary>
     [TestFixture]
     public class ParserTests
     {

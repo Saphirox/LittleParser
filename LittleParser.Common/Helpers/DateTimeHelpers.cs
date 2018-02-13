@@ -26,6 +26,6 @@ namespace LittleParser.Common.Helpers
         /// <returns></returns>
         public static DateTimeOffset ConvertApacheLogDateTime(string dateTime)
                 => DateTimeOffset.ParseExact(dateTime,
-                    "dd/MMM/yyyy:h:mm:ss zzzz", System.Globalization.CultureInfo.InvariantCulture);
+                    "dd/MMM/yyyy:HH:mm:ss zzzz", System.Globalization.CultureInfo.InvariantCulture);
     }
 }

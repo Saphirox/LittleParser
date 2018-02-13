@@ -1,11 +1,16 @@
-﻿namespace LittleParser.Services.Infrastructure.Parsers
+﻿using System;
+
+namespace LittleParser.Services.Infrastructure.Parsers
 {
     using System.IO;
     using System.Linq;
 
+    /// <summary>
+    /// Check is valid string and parse route from string 
+    /// </summary>
     public class RouteLogParserVisitor : LogParserVisitor
     {
-        private readonly string[] _appropriatedExtensions = {string.Empty, ".html"};
+        private readonly string[] _appropriatedExtensions = {"html"};
         
         public override bool Handle(ApacheLogParser apacheLogParser)
         {
@@ -32,9 +37,23 @@
         
         private bool IsAppropriateUrl(string route)
         {
-            var ext = Path.GetExtension(route);
+            try
+            {
+                string[] tokens = route.Split('.');
 
-            return _appropriatedExtensions.Contains(ext);
+                if (tokens.Length > 1)
+                {
+                    return _appropriatedExtensions.Any(tokens.Contains);
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
     }
 }

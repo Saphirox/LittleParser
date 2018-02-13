@@ -8,6 +8,9 @@ using LittleParser.Services.Services;
 
 namespace LittleParser.Web.Controllers
 {
+    /// <summary>
+    /// Api for apache log parser
+    /// </summary>
     [RoutePrefix("api/parser")]
     public class ApacheLogController : ApiControllerBase
     {

@@ -9,7 +9,7 @@
     <StackPanel>
        <Menu>
             <MenuItem Header="_File">
-                <MenuItem Header="_Download" Click="DownloadFileForParsing"></MenuItem>
+                <MenuItem Header="_AddLogs" Click="DownloadFileForParsing"></MenuItem>
             </MenuItem>
        </Menu>
         <TextBlock x:Name="Status" Text="Download file"></TextBlock>

@@ -1,5 +1,8 @@
 ﻿namespace LittleParser.Services.Infrastructure.Parsers
 {
+    /// <summary>
+    /// Retrieve Content size from string
+    /// </summary>
     public class ContentSizeVisitorLogParser : LogParserVisitor
     {
         public override bool Handle(ApacheLogParser apacheLogParser)

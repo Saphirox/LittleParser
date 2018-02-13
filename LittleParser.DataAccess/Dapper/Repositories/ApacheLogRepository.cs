@@ -33,32 +33,23 @@ namespace LittleParser.DataAccess.Dapper.Repositories
         public void Add(ApacheLog entity) =>
             Connection.Execute(AddStatement, entity, Transaction);
 
-        public IEnumerable<ApacheLog> GetAll(DateTimeOffset? start, DateTimeOffset? end, long offset, long limit)
-        {
-            start = start ?? DateTimeOffset.MinValue;
-            end = end ?? DateTimeOffset.MaxValue;
-            
-            var @params = new {Start = start.Value, End = end.Value, Offset = offset, Limit = limit};
+        public IEnumerable<ApacheLog> GetAll(DateTimeOffset start, DateTimeOffset end, long offset, long limit)
+        {   
+            var @params = new {Start = start, End = end, Offset = offset, Limit = limit};
 
             return Connection.Query<ApacheLog>(GetAllStatement, @params, Transaction);
         }
 
-        public IEnumerable<ApacheLog> GetTopHosts(DateTimeOffset? start, DateTimeOffset? end, long n)
+        public IEnumerable<ApacheLog> GetTopHosts(DateTimeOffset start, DateTimeOffset end, long n)
         {
-            start = start ?? DateTimeOffset.MinValue;
-            end = end ?? DateTimeOffset.MaxValue;
-            
-            var @params = new {Start = start.Value, End = end.Value, N = n};
+            var @params = new {Start = start, End = end, N = n};
             
             return Connection.Query<ApacheLog>(GetTopHostStatement, @params, Transaction);
         }
 
-        public IEnumerable<ApacheLog> GetTopRoutes(DateTimeOffset? start, DateTimeOffset? end, long n)
+        public IEnumerable<ApacheLog> GetTopRoutes(DateTimeOffset start, DateTimeOffset end, long n)
         {
-            start = start ?? DateTimeOffset.MinValue;
-            end = end ?? DateTimeOffset.MaxValue;
-            
-            var @params = new {Start = start.Value, End = end.Value, N = n};
+            var @params = new {Start = start, End = end, N = n};
             
             return Connection.Query<ApacheLog>(GetTopRoutesStatement, @params, Transaction);
         }

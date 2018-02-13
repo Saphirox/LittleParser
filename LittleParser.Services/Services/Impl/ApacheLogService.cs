@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using LittleParser.Common;
 using LittleParser.DataAccess.Persistance;
 using LittleParser.Models.Entities;
@@ -28,19 +29,28 @@ namespace LittleParser.Services.Services.Impl
             });
         }
 
-        public ServiceResult<IEnumerable<ApacheLog>> GetTopHosts(long n, DateTimeOffset? start, DateTimeOffset? end)
+        public ServiceResult<IEnumerable<string>> GetTopHosts(long n, DateTimeOffset? start, DateTimeOffset? end)
         {
-            return ReturnResult(() => _uow.ApacheLogRepository.GetTopHosts(start, end, n));
+            start = start ?? DateTimeOffset.MinValue;
+            end = end ?? DateTimeOffset.MaxValue;
+
+            return ReturnResult(() => _uow.ApacheLogRepository.GetTopHosts(start.Value, end.Value, n).Select(c => c.Host));
         }
 
-        public ServiceResult<IEnumerable<ApacheLog>> GetTopRoutes(long n, DateTimeOffset? start, DateTimeOffset? end)
+        public ServiceResult<IEnumerable<string>> GetTopRoutes(long n, DateTimeOffset? start, DateTimeOffset? end)
         {
-            return ReturnResult(() => _uow.ApacheLogRepository.GetTopRoutes(start, end, n));
+            start = start ?? DateTimeOffset.MinValue;
+            end = end ?? DateTimeOffset.MaxValue;
+
+            return ReturnResult(() => _uow.ApacheLogRepository.GetTopRoutes(start.Value, end.Value, n).Select(c => c.Route));
         }
 
         public ServiceResult<IEnumerable<ApacheLog>> GetAll(DateTimeOffset? start, DateTimeOffset? end, long offset, long limit)
         {
-            return ReturnResult(() =>_uow.ApacheLogRepository.GetAll(start, end, offset, limit));
+            start = start ?? DateTimeOffset.MinValue;
+            end = end ?? DateTimeOffset.MaxValue;
+
+            return ReturnResult(() =>_uow.ApacheLogRepository.GetAll(start.Value, end.Value, offset, limit));
         }
     }
 }

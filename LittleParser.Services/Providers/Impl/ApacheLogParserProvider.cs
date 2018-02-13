@@ -1,9 +1,12 @@
 ﻿namespace LittleParser.Services.Providers.Impl
 {
-    using LittleParser.Models.Entities;
-    using LittleParser.Services.Facades;
-    using LittleParser.Services.Infrastructure.Parsers;
+    using Models.Entities;
+    using Infrastructure.Parsers;
 
+
+    /// <summary>
+    // Facade for using ApacheParser
+    /// </summary>
     public class ApacheLogParserProvider : IApacheLogParserProvider
     {
         public bool TryParse(string line, out ApacheLog log)

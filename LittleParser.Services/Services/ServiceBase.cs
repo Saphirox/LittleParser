@@ -4,6 +4,9 @@ using LittleParser.Common;
 
 namespace LittleParser.Services.Services
 {
+    /// <summary>
+    /// Helper for transport state and result between Web layer and Business logic layer
+    /// </summary>
     public abstract class ServiceBase
     {
         protected ServiceResult<TEntity> ReturnResult<TEntity>(Func<TEntity> expression) where TEntity : class

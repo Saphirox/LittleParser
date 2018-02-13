@@ -4,6 +4,9 @@ using LittleParser.Common.Constants;
 
 namespace LittleParser.DataAccess.Dapper.Factories
 {
+    /// <summary>
+    /// Impementation using MSSQL
+    /// </summary>
     public class SqlConnectionFactory : IDbConnectionFactory
     {
         public IDbConnection CreateConnection()

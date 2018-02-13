@@ -1,5 +1,8 @@
 ﻿namespace LittleParser.Services.Infrastructure.Parsers
 {
+    /// <summary>
+    /// Retrive status code from string 
+    /// </summary>
     public class StatusCodeLogParserVisitor : LogParserVisitor
     {
         public override bool Handle(ApacheLogParser apacheLogParser)
